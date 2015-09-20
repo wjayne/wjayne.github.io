@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="resumePage">
+ <head>
+  <meta charset="UTF-8">
+  <title>William Jayne</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="jquery-ui.min.css">
+  <script type="text/javascript" src="jquery-ui.min.js"></script>
+  <script type="text/javascript" src="Chart.js"></script>
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="app1.js"></script>
+
+ </head>
+ <body>
+ 	<div class="header" id="backdrop">
+ 		<div class="container">
+ 			<div class="col-md-12">
+ 				<h1 style="color:white; opacity:0.8">William E. Jayne</h1>
+ 			</div>
+ 		</div>
+ 		
+ 		<section ng-controller="TabController as tab">
+ 			<div class="container fluid">
+ 				<div class="row">
+ 					<div class="col-md-11" id="pill-row">
+ 						<ul class="nav nav-pills">
+  							<li ng-class="{ active:tab.isSet(1) }"><a id="wrap" href="#" ng-click="tab.setTab(1)">Resume</a></li>
+  							<li ng-class="{ active:tab.isSet(2) }"><a href="#" ng-click="tab.setTab(2)" id="resumeB">Experience</a></li>
+  							<li ng-class="{ active:tab.isSet(3) }"><a href="#" ng-click="tab.setTab(3)">Contact</a></li>
+						</ul>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div class="container">
+ 				<div class="col-md-8 col-md-offset-1" id="resume" ng-show="tab.isSet(1)">
+ 					<object data="resume.pdf" type="application/pdf">
+						alt : <a href="test.pdf">test.pdf</a>
+					</object>
+ 				</div>
+ 			</div>
+ 			<div class="container">
+ 				<div class="col-md-910 col-md-offset-1" id="resume2" ng-show="tab.isSet(2)">
+ 					<h3 id="skills" style="color:white; opacity:0.8">Skills</h3>
+          <div class="container">
+            <div class="row">
+                <div  class="col-sm-4"><canvas id="myChart" width="400" height="400"></canvas></div>
+                <div  class="col-sm-4 col-sm-offset-3">
+                  <h4 id="exp" style="color:white; opacity:0.8">Experiences</h4>
+                  <ul id ="expList">
+                    <li style="color:white"><a href="http://ignitethefla.me" target="_blank" style="color:blue">Ignite</a> mentor (2015 fall)
+                      <ul id="sublist">
+                        <li>Program where upperclassmen mentor<br>freshman who range from complete<br>beginners to experts within their field</li>
+                        <br>
+                        <li>Upperclassmen will guide the students<br>in both programming knowledge and<br>social aspects of cs such as career fairs</li>
+                      </ul>
+                    </li>
+                    <li style="color:white">Hack Illinois (2015 Spring)</li>
+                      <ul id="sublist">
+                        <li>Built fully funtional Anndroid Program<br>in 36 hours and learned many new skills<br>such as firebase and SQLite</li>
+                        <br>
+                        <li>Application was designed for small businesses to open an account and add employees, after which the manager may assign and track employees' tasks</li>
+                      </ul>
+                    <li style="color:white"><a href="http://play.google.com/store/apps/details?id=jayne.william.PWV&hl=en" target="_blank" style="color:blue">Password Vault</a> (2014 Fall)</li>
+                      <ul id="sublist">
+                        <li>An app that upon opening for the first time prompts the user to input a pin consisting of four digits, after which the user may input username or email and password combinations, which are then stored</li>
+                        <br>
+                        <li>Actually built out of desire for an application that did this but in a very lightweight and simple form</li>
+                      </ul>
+                  </ul>
+              </div>
+            </div>
+          </div>
+ 				</div>
+ 			</div>
+ 			<div>
+ 				<div class="container" ng-show="tab.isSet(3)">
+ 					<div class="col-md-8 col-md-offset-3" id="contact">
+ 						<h2>Contact info</h2>
+ 						<p>Email: wjayne@purdue.edu</p>
+ 						<p>Phone: 615-504-3304 (Text or Call)</p>
+ 						<div class="container">
+ 							<div class="row">
+ 								<div class="col-sm-3 col-sm-offset-2">
+ 									<ul id="social-media-list">
+ 										<li><a href="https://twitter.com/Will_jayne" target="_blank"><img src="twitter.png" class="social-media"></a></li>
+ 										<li><a href="https://www.linkedin.com/profile/view?id=AAIAABZLF9cBPaHOsYJw7mPVyReFwpE1BOuvmkA&trk=nav_responsive_tab_profile_pic" target="_blank"><img src="linkedin.png" class="social-media"></a></li>
+ 										<li><a href="https://www.facebook.com/will.jayne.73" target="_blank"><img src="facebook.png" class="social-media"></a></li>
+ 									</ul>
+ 								</div>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</section>	
+
+
+
+ 	</div>
+ 	<script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  var ctx = document.getElementById("myChart").getContext("2d");
+  
+  var data = {
+    labels: ["Java", "Javascript", "C/C++", "Ruby", "HTML/CSS"],
+    datasets: [
+        {
+            
+            label: "Languages",
+            fillColor: "rgba(255,71,25,1)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(166,265,166,0.9)",
+            highlightStroke: "rgba(166,265,166,0.9)",
+            data: [87, 65, 60, 45, 75]
+        },
+        /*{
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }*/
+    ]
+};
+var skill = ["0", "Begginer", "Intermediate", "Profficient", "Advanced", "Expert"] ;
+var myBarChart = new Chart(ctx).Bar(data, {
+  scaleShowGridLines: false,
+  scaleIntegersOnly:false,
+  scaleOverride: true,
+  scaleSteps: 5,
+  scaleStepWidth: 20,
+  scaleFontColor: "rgba(255,255,255,1)",
+  scaleFontFamily: "'bellotaregular'",
+   scaleLineColor: "rgba(0,0,0,1)",
+  animationEasing: "linear",
+  responsive:false,
+  scaleLabel: "<%='     ' + skill[value/20]%>",
+  tooltipTemplate: null,
+  scaleStartValue: 0
+});
+  </script>
+ </body>
+</html>
